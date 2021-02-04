@@ -19,7 +19,7 @@ Make sure you're aleready install [NodeJS](https://nodejs.org/en/) and [NPM](htt
 ```bash
 $ git clone https://github.com/jurnalanas/simple-reviews.git
 $ cd simple-reviews
-$ cp env.sample .env # adjust the value in it as needed
+$ cp env-sample .env # adjust the value in it as needed
 $ npm run # install all dependencies
 ```
 
