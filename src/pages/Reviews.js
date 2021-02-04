@@ -12,7 +12,7 @@ const Reviews = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   useEffect(() => {
-    // we use array index as id because there is a unique id property on Review Item response API
+    // we use array index as an id because there is no unique id property
     const fetchProducts = async () => {
       try {
         const responseData = await sendRequest(process.env.REACT_APP_API_HOST);
