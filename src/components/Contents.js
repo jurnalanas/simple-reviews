@@ -10,15 +10,15 @@ const Contents = props => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchReviews = async () => {
       try {
         const responseData = await sendRequest(process.env.REACT_APP_API_HOST);
         const dataList = await responseData['data'];
         setFetchData(true);
-        setReviewsData(dataList);
+        setReviewsData(dataList || null);
       } catch (err) {}
     };
-    fetchProducts();
+    fetchReviews();
   }, [sendRequest]);
 
   if (dataFetched) {
@@ -33,6 +33,7 @@ const Contents = props => {
               return (
                 <ReviewCard
                   key={index}
+                  id={index}
                   profileName={item.profile_name}
                   reviewRating={reviewRating}
                   reviewTitle={item.review_title}
