@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
 import ErrorModal from '../shared/components/UIElements/ErrorModal';
@@ -21,14 +22,19 @@ const Contents = props => {
     fetchReviews();
   }, [sendRequest]);
 
+  const result = !props.searchTerm
+    ? reviewsData
+    : reviewsData.filter(item => {
+      return item.profile_name.toLowerCase().includes(props.searchTerm.toLocaleLowerCase())
+  });
+
   if (dataFetched) {
-    console.log({reviewsData})
     return (
       <>
         {isLoading && <LoadingSpinner asOverlay />}
         {!isLoading && dataFetched &&
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {reviewsData.map((item, index) => {
+            {result.map((item, index) => {
               const reviewRating = parseFloat(item.review_rating.split(' ')[0]);
               return (
                 <ReviewCard
@@ -40,7 +46,12 @@ const Contents = props => {
                   reviewText={item.review_text}
                 />
               )
-            })};
+            })}
+          </div>
+        }
+        {!isLoading && dataFetched && reviewsData.length < 1 &&
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            No Result
           </div>
         }
       </>
@@ -58,5 +69,9 @@ const Contents = props => {
     );
   }
 }
+
+Contents.propTypes = {
+  searchTerm: PropTypes.string
+};
 
 export default Contents;
