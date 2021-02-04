@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Rating from 'react-rating';
+import InfoModal from '../shared/components/UIElements/InfoModal';
 
 const ReviewCard = props => {
+  const modal = useRef(null)
+
   return (
     <div className="w-full p-3">
       <div className="bg-white border rounded shadow">
@@ -22,20 +25,22 @@ const ReviewCard = props => {
                 Show review details
               </button>
             </Link>
-            <Link to={`/reviews/${props.id}`}>
-              <button className="bg-gray-500 hover:bg-gray-700 px-4 py-2 rounded text-sm text-white">
-                Show review text
-              </button>
-            </Link>
+            <button className="bg-gray-500 hover:bg-gray-700 px-4 py-2 rounded text-sm text-white" onClick={() => modal.current.open()}>
+              Show review text
+            </button>
           </div>
         </div>
       </div>
+      <InfoModal ref={modal}>
+        {props.reviewText}
+      </InfoModal>
     </div>
   )
 }
 
 ReviewCard.propTypes = {
   profileName: PropTypes.string,
+  reviewText: PropTypes.string,
   reviewRating: PropTypes.number,
   id: PropTypes.number,
   reviewTitle: PropTypes.string,

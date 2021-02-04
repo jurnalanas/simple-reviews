@@ -37,6 +37,7 @@ const Contents = props => {
                   profileName={item.profile_name}
                   reviewRating={reviewRating}
                   reviewTitle={item.review_title}
+                  reviewText={item.review_text}
                 />
               )
             })};
