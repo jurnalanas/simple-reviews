@@ -1,12 +1,19 @@
+import React from "react";
+import Navbar from "./components/Navbar";
+import Contents from "./components/Contents";
+
 function App() {
   return (
-    <div>
-      <div className="container w-full mx-auto pt-20">
-        <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-        hmm
+    <>
+      <div className="bg-gray-200 h-screen">
+        <Navbar />
+        <div className="container mx-auto">
+          <div className="px-4 mb-16 text-gray-800 leading-normal">
+            <Contents />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
