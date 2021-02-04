@@ -1,19 +1,22 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Contents from "./components/Contents";
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Reviews from './pages/Reviews';
 
 function App() {
   return (
-    <>
-      <div className="bg-gray-200">
-        <Navbar />
-        <div className="container mx-auto">
-          <div className="px-4 mb-16 text-gray-800 leading-normal">
-            <Contents />
-          </div>
-        </div>
-      </div>
-    </>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Home/>
+        </Route>
+        <Route path="/reviews/:reviewId" exact>
+          <Reviews/>
+        </Route>
+        <Redirect to ="/" />
+      </Switch>
+    </Router>
   );
 }
 

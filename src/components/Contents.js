@@ -28,10 +28,11 @@ const Contents = props => {
         {isLoading && <LoadingSpinner asOverlay />}
         {!isLoading && dataFetched &&
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {reviewsData.map(item => {
+            {reviewsData.map((item, index) => {
               const reviewRating = parseFloat(item.review_rating.split(' ')[0]);
               return (
                 <ReviewCard
+                  key={index}
                   profileName={item.profile_name}
                   reviewRating={reviewRating}
                   reviewTitle={item.review_title}
