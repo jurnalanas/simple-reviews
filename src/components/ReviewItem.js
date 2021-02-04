@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ReviewItem = props => {
 
   return (
-    <div className="w-1/2 p-3 m-auto bg-white shadow overflow-hidden sm:rounded-lg">
+    <div className="lg:w-1/2 p-3 m-auto bg-white shadow overflow-hidden sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
         <h3 className="text-lg leading-6 font-medium text-gray-900">
           "{props.reviewTitle}"
