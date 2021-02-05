@@ -19,7 +19,7 @@ Make sure you're aleready install [NodeJS](https://nodejs.org/en/) and [NPM](htt
 ```bash
 $ git clone https://github.com/jurnalanas/simple-reviews.git
 $ cd simple-reviews
-$ cp env-sample .env # adjust the value in it as needed
+$ cp .env-sample .env # adjust the value in it as needed
 $ npm install # install all dependencies
 ```
 
@@ -51,4 +51,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details
 
 ## TODO
-- [ ] Component tests
+- [ ] add Component tests
